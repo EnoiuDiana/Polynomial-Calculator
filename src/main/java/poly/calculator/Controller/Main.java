@@ -1,4 +1,4 @@
-package poly.calculator;
+package poly.calculator.Controller;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,13 +14,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("scene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/poly/calculator/View/scene.fxml"));
 
         Scene scene = new Scene(root);
-        //scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
 
-        stage.setTitle("JavaFX and Gradle");
+        stage.setTitle("Polynomial Calculator");
         stage.setScene(scene);
         stage.show();
+
     }
 }

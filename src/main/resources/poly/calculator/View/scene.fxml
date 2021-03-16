@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poly.calculator.Controller.HomeController">
+   <children>
+      <Label layoutX="124.0" layoutY="60.0" prefHeight="25.0" prefWidth="113.0" text="Enter first polynomial" />
+      <Label layoutX="124.0" layoutY="102.0" prefHeight="25.0" prefWidth="139.0" text="Enter second polynomial" />
+      <Label layoutX="124.0" layoutY="159.0" text="Select operation" />
+      <Label layoutX="124.0" layoutY="226.0" text="Result" />
+      <TextField fx:id="firstPolynomial" layoutX="302.0" layoutY="56.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField fx:id="secondPolynomial" layoutX="302.0" layoutY="98.0" />
+      <Button layoutX="300.0" layoutY="155.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" stylesheets="@style.css" text="+" />
+      <Button layoutX="362.0" layoutY="155.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" prefHeight="31.0" prefWidth="32.0" stylesheets="@style.css" text="-" />
+      <Label fx:id="result" layoutX="301.0" layoutY="218.0" prefHeight="25.0" prefWidth="149.0" />
+   </children>
+</Pane>

@@ -1,2 +1,3 @@
 rootProject.name = 'PT2021_30422_Enoiu_Diana_Assignment_1'
+include ':libraries:guava', ':Test'
 
