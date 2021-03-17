@@ -5,23 +5,17 @@ import java.util.*;
 public class Polynomial {
     List<Monomial> polynomial = new ArrayList<>();
 
-    public void addMonomial(Monomial monomial){
+    protected void addMonomial(Monomial monomial){
         this.polynomial.add(monomial);
     }
 
-    protected void listMonomials() {
-        for (Monomial monomial : polynomial) {
-            System.out.println(monomial.getMonomial());
-        }
-    }
-
-    protected void updatePolynomial() {
+    private void updatePolynomial() {
         for (Monomial monomial : polynomial) {
             monomial.updateMonomialString();
         }
     }
 
-    public Iterator<Monomial> iteratorFromIndex(int x) {
+    private Iterator<Monomial> iteratorFromIndex(int x) {
         if (x < 0 || this.polynomial.size() < x) {
             throw new IndexOutOfBoundsException();
         }

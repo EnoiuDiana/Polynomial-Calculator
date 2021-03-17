@@ -30,4 +30,17 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
-mainClassName = "poly.calculator.Controller.Main"
+mainClassName = "poly.calculator.App.Main"
+
+jar {
+    manifest {
+        attributes "Main-Class": "poly.calculator.App.Main"
+        from {
+            configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        }
+    }
+}
+
+application {
+    mainClassName = 'poly.calculator.App.Main'
+}

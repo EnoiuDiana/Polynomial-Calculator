@@ -1,4 +1,4 @@
-package poly.calculator.Controller;
+package poly.calculator.Model;
 
 import poly.calculator.Model.Monomial;
 import poly.calculator.Model.Operation;

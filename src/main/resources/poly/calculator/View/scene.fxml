@@ -8,7 +8,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poly.calculator.Controller.HomeController">
    <children>
-      <BorderPane layoutX="17.0" layoutY="16.0" prefHeight="259.0" prefWidth="569.0" style="-fx-border-color: rgb(238,168,47); -fx-border-radius: 5pt; -fx-border-style: dashed;" />
+      <BorderPane layoutX="17.0" layoutY="16.0" prefHeight="259.0" prefWidth="569.0" style="-fx-border-color: rgb(255,146,1); -fx-border-radius: 5pt; -fx-border-style: dashed;" />
       <GridPane layoutX="32.0" layoutY="22.0" prefHeight="242.0" prefWidth="540.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="423.79998474121095" minWidth="10.0" prefWidth="166.8" />
@@ -44,22 +44,22 @@
       <Button fx:id="add" blendMode="EXCLUSION" layoutX="221.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" prefHeight="31.0" prefWidth="32.0" stylesheets="@style.css" text="+" />
       <Button fx:id="sub" blendMode="EXCLUSION" layoutX="268.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" prefHeight="31.0" prefWidth="32.0" stylesheets="@style.css" text="-" />
       <Button fx:id="multi" blendMode="EXCLUSION" layoutX="312.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" prefHeight="31.0" prefWidth="32.0" styleClass="style.css" stylesheets="@style.css" text="*" />
-      <Label blendMode="SCREEN" layoutX="36.0" layoutY="282.0" prefHeight="25.0" prefWidth="464.0" style="-fx-font-color: rgb(238,168,47);" text="Enter polynomials in the form: 4x^3-2x^2+x-5+6x^-2..." textFill="#eea82f">
+      <Label blendMode="SCREEN" layoutX="36.0" layoutY="282.0" prefHeight="25.0" prefWidth="464.0" style="-fx-font-color: rgb(238,168,47);" text="Enter polynomials in the form: 4x^3-2x^2+x-5+6x^-2..." textFill="#ff9201">
          <font>
             <Font size="11.0" />
          </font></Label>
       <Button fx:id="div" blendMode="EXCLUSION" layoutX="355.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" prefHeight="31.0" prefWidth="32.0" stylesheets="@style.css" text="/" />
       <Button fx:id="deriv" blendMode="EXCLUSION" layoutX="398.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" prefHeight="35.0" prefWidth="72.0" stylesheets="@style.css" text="d/dx" />
       <Button fx:id="integ" blendMode="EXCLUSION" layoutX="470.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" prefHeight="35.0" prefWidth="66.0" stylesheets="@style.css" text=" ∫dx" />
-      <Label blendMode="SCREEN" layoutX="35.0" layoutY="307.0" prefHeight="25.0" prefWidth="301.0" text="Do not use spaces, paranthesis or the * operator." textFill="#eea82f">
+      <Label blendMode="SCREEN" layoutX="35.0" layoutY="307.0" prefHeight="25.0" prefWidth="301.0" text="Do not use spaces, parenthesis or the * operator." textFill="#ff9201">
          <font>
             <Font size="11.0" />
          </font></Label>
-      <Label blendMode="SCREEN" layoutX="36.0" layoutY="338.0" text="Polynomials do not have to be sorted or simplified." textFill="#eea82f">
+      <Label blendMode="SCREEN" layoutX="36.0" layoutY="338.0" text="Polynomials do not have to be sorted or simplified." textFill="#ff9201">
          <font>
             <Font size="11.0" />
          </font></Label>
-      <Label blendMode="SCREEN" layoutX="36.0" layoutY="362.0" text="For derivative and integral operations, enter the polynomial in the first filed." textFill="#eea82f">
+      <Label blendMode="SCREEN" layoutX="36.0" layoutY="362.0" text="For derivative and integral operations, enter the polynomial in the first filed." textFill="#ff9201">
          <font>
             <Font size="11.0" />
          </font>
