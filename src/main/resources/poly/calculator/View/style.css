@@ -1,4 +1,22 @@
+.root {
+    -fx-base: rgb(50, 50, 50);
+    -fx-background: rgb(50, 50, 50);
+    -fx-control-inner-background:  rgb(50, 50, 50);
+}
+
 .button {
-    -fx-font-size: 15px;
-    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+}
+
+.button:hover {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-color: -fx-hover-base;
+}
+
+.text {
+    -fx-font-family: Verdana;
+}
+
+.borderpane {
+    -fx-border-style: dashed;
 }

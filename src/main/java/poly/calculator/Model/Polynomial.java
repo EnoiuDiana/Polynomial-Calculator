@@ -1,9 +1,6 @@
 package poly.calculator.Model;
 
-import java.util.ArrayList;
-
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Polynomial {
     List<Monomial> polynomial = new ArrayList<>();
@@ -24,15 +21,34 @@ public class Polynomial {
         }
     }
 
+    public Iterator<Monomial> iteratorFromIndex(int x) {
+        if (x < 0 || this.polynomial.size() < x) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        Iterator<Monomial> it = polynomial.iterator();
+
+        for (; x > 0; --x) {
+            it.next(); // ignore the first x values
+        }
+        return it;
+    }
+
     public void simplifyAndSort() {
+        //check for zero polynomial
+        if(polynomial.size() == 1 && polynomial.get(0).getCoefficient() == 0) return;
+        //if we have zero monomials remove them
+        polynomial.removeIf(monomial -> monomial.getCoefficient() == 0);
         //simplify
         for(int i=0; i<polynomial.size(); i++) {
             int power_1 = polynomial.get(i).getPower();
-            for(int j=i+1; j<polynomial.size();j++) {
-                int power_2 = polynomial.get(j).getPower();
+            Iterator<Monomial> monomialIterator = iteratorFromIndex(i+1);
+            while (monomialIterator.hasNext()) {
+                Monomial monomial = monomialIterator.next();
+                int power_2 = monomial.getPower();
                 if(power_2 == power_1) {
-                    polynomial.get(i).addCoefficient(polynomial.get(j).getCoefficient());
-                    this.polynomial.remove(j);
+                    polynomial.get(i).addCoefficient(monomial.getCoefficient());
+                    monomialIterator.remove();
                 }
             }
         }
@@ -55,5 +71,11 @@ public class Polynomial {
             polyString = polyString.concat(monomial.getMonomial());
         }
         return polyString;
+    }
+
+    protected int getDegree() {  //sort the polynomial before using this function
+        int p = -1;
+        if(polynomial.get(0).getCoefficient() != 0) p = polynomial.get(0).getPower();
+        return p;
     }
 }

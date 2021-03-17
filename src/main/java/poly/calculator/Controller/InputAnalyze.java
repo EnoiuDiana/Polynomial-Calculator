@@ -22,7 +22,6 @@ public class InputAnalyze {
         if(!rebuildPolynomial.equals(userInputPolynomial)) {
             return null;
         }
-
         return addMonomialsToPolynomial(pattern, userInputPolynomial);
     }
 
@@ -69,14 +68,23 @@ public class InputAnalyze {
         if(signPower.equals("-")) {
             power = power * (-1);
         }
-
         return new Monomial(userInputMonomial, coefficient, power);
     }
 
     public static Polynomial identifyOperationAndPerform(String operation, Polynomial firstPoly, Polynomial secondPoly) {
         Polynomial resultPolynomial = null;
-        if(operation.equals("+")) {
+        if(operation.equals("add")) {
             resultPolynomial = Operation.addition(firstPoly, secondPoly);
+        } else if(operation.equals("sub")) {
+            resultPolynomial = Operation.subtraction(firstPoly, secondPoly);
+        } else if(operation.equals("multi")) {
+            resultPolynomial = Operation.multiplication(firstPoly, secondPoly);
+        } else if(operation.equals("div")) {
+            resultPolynomial = Operation.division(firstPoly, secondPoly);
+        } else if(operation.equals("deriv")) {
+            resultPolynomial = Operation.derivative(firstPoly);
+        } else if(operation.equals("integ")) {
+            resultPolynomial = Operation.integrate(firstPoly);
         }
         return resultPolynomial;
     }

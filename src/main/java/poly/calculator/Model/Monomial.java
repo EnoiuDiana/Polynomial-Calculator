@@ -1,6 +1,8 @@
 package poly.calculator.Model;
 
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Comparator;
 
 import static com.google.common.math.DoubleMath.isMathematicalInteger;
@@ -20,6 +22,51 @@ public class Monomial {
         this.coefficient = this.coefficient + coefficientToAdd;
     }
 
+    protected static Monomial add(Monomial monomial1, Monomial monomial2) {
+        Monomial result;
+        double resultCoefficient = monomial1.getCoefficient() + monomial2.getCoefficient();
+        int resultPower = monomial1.getPower();
+        result = new Monomial("", resultCoefficient, resultPower);
+        result.updateMonomialString();
+        return result;
+    }
+
+    protected static Monomial multiply(Monomial monomial1, Monomial monomial2) {
+        Monomial result;
+        double resultCoefficient = monomial1.getCoefficient() * monomial2.getCoefficient();
+        int resultPower = monomial1.getPower() + monomial2.getPower();
+        result = new Monomial("", resultCoefficient, resultPower);
+        result.updateMonomialString();
+        return result;
+    }
+
+    protected static Monomial divide(Monomial monomial1, Monomial monomial2) {
+        Monomial result;
+        double resultCoefficient = monomial1.getCoefficient() / monomial2.getCoefficient();
+        int resultPower = monomial1.getPower() - monomial2.getPower();
+        result = new Monomial("", resultCoefficient, resultPower);
+        result.updateMonomialString();
+        return result;
+    }
+
+    protected static Monomial derive(Monomial monomial1) {
+        Monomial result;
+        double resultCoefficient = monomial1.getCoefficient() * monomial1.getPower();
+        int resultPower = monomial1.getPower() - 1;
+        result = new Monomial("", resultCoefficient, resultPower);
+        result.updateMonomialString();
+        return result;
+    }
+
+    protected static Monomial integral(Monomial monomial1) {
+        Monomial result;
+        double resultCoefficient = monomial1.getCoefficient() / (monomial1.getPower() + 1);
+        int resultPower = monomial1.getPower() + 1;
+        result = new Monomial("", resultCoefficient, resultPower);
+        result.updateMonomialString();
+        return result;
+    }
+
     protected static Comparator<Monomial> compareByPower() {
         return Comparator.comparingInt(Monomial::getPower);
     }
@@ -27,19 +74,25 @@ public class Monomial {
         String newMonomial;
         if(isMathematicalInteger(this.coefficient)) {
             int integerCoefficient = (int) this.coefficient;
-            newMonomial = buildTheNewMonomialString(integerCoefficient);
+            newMonomial = buildTheNewMonomialString(integerCoefficient, false);
         } else {
-            newMonomial = buildTheNewMonomialString(this.coefficient);
+            newMonomial = buildTheNewMonomialString(this.coefficient, true);
         }
         monomial = newMonomial;
     }
 
-    private String buildTheNewMonomialString(Number coeff) {
+    private double computeDoubleCoeff(double coeff) {
+        BigDecimal bd = new BigDecimal(coeff).setScale(2, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+
+    private String buildTheNewMonomialString(Number coeff, boolean isDouble) {
         String newMonomial;
         if (coeff.equals(0)) {
             newMonomial = "0";
         } else if (power == 0) {
-            newMonomial = coeff + "";
+            if(isDouble) newMonomial = computeDoubleCoeff((double)coeff) + "";
+            else newMonomial = coeff + "";
         } else if (coeff.equals(1)) {
             if (power == 1) {
                 newMonomial = "x";
@@ -54,12 +107,18 @@ public class Monomial {
             }
         } else {
             if (power == 1) {
-                newMonomial = coeff + "x";
+                if(isDouble) newMonomial = computeDoubleCoeff((double)coeff) + "x";
+                else newMonomial = coeff + "x";
             } else {
-                newMonomial = coeff + "x^" + power;
+                if(isDouble) newMonomial = computeDoubleCoeff((double)coeff) + "x^" + power;
+                else newMonomial = coeff + "x^" + power;
             }
         }
         return newMonomial;
+    }
+
+    protected void changeSignOfCoefficient() {
+        coefficient = coefficient * (-1);
     }
 
     public String getMonomial() {

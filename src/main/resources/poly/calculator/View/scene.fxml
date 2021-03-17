@@ -1,18 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poly.calculator.Controller.HomeController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poly.calculator.Controller.HomeController">
    <children>
-      <Label layoutX="124.0" layoutY="60.0" prefHeight="25.0" prefWidth="113.0" text="Enter first polynomial" />
-      <Label layoutX="124.0" layoutY="102.0" prefHeight="25.0" prefWidth="139.0" text="Enter second polynomial" />
-      <Label layoutX="124.0" layoutY="159.0" text="Select operation" />
-      <Label layoutX="124.0" layoutY="226.0" text="Result" />
-      <TextField fx:id="firstPolynomial" layoutX="302.0" layoutY="56.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField fx:id="secondPolynomial" layoutX="302.0" layoutY="98.0" />
-      <Button layoutX="300.0" layoutY="155.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" stylesheets="@style.css" text="+" />
-      <Button layoutX="362.0" layoutY="155.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" prefHeight="31.0" prefWidth="32.0" stylesheets="@style.css" text="-" />
-      <Label fx:id="result" layoutX="301.0" layoutY="218.0" prefHeight="25.0" prefWidth="149.0" />
+      <BorderPane layoutX="17.0" layoutY="16.0" prefHeight="259.0" prefWidth="569.0" style="-fx-border-color: rgb(238,168,47); -fx-border-radius: 5pt; -fx-border-style: dashed;" />
+      <GridPane layoutX="32.0" layoutY="22.0" prefHeight="242.0" prefWidth="540.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="423.79998474121095" minWidth="10.0" prefWidth="166.8" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="424.99998474121094" minWidth="9.600015258789028" prefWidth="30.80000000000001" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="424.99998474121094" minWidth="10.0" prefWidth="350.19999999999993" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="147.6" minHeight="10.0" prefHeight="58.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="147.6" minHeight="10.0" prefHeight="53.00000000000001" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="82.4" minHeight="10.0" prefHeight="58.599999999999994" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="79.59999999999997" minHeight="10.0" prefHeight="70.59999999999997" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label blendMode="EXCLUSION" prefHeight="25.0" prefWidth="130.0" stylesheets="@style.css" text="Enter first polynomial" GridPane.halignment="RIGHT">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label blendMode="EXCLUSION" prefHeight="25.0" prefWidth="149.0" stylesheets="@style.css" text="Enter second polynomial" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+            <TextField fx:id="firstPolynomial" prefHeight="25.0" prefWidth="318.0" GridPane.columnIndex="2" />
+            <TextField fx:id="secondPolynomial" prefHeight="25.0" prefWidth="318.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label fx:id="result" prefHeight="49.0" prefWidth="348.0" style="-fx-border-radius: 2pt; -fx-border-color: rgb(35,35,35);" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <effect>
+                  <Blend />
+               </effect>
+               <padding>
+                  <Insets right="1.0" />
+               </padding>
+            </Label>
+            <Label blendMode="EXCLUSION" prefHeight="17.0" prefWidth="100.0" text="Select operation" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <Label blendMode="EXCLUSION" text="Result" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <Button fx:id="add" blendMode="EXCLUSION" layoutX="221.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" prefHeight="31.0" prefWidth="32.0" stylesheets="@style.css" text="+" />
+      <Button fx:id="sub" blendMode="EXCLUSION" layoutX="268.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" prefHeight="31.0" prefWidth="32.0" stylesheets="@style.css" text="-" />
+      <Button fx:id="multi" blendMode="EXCLUSION" layoutX="312.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" prefHeight="31.0" prefWidth="32.0" styleClass="style.css" stylesheets="@style.css" text="*" />
+      <Label blendMode="SCREEN" layoutX="36.0" layoutY="282.0" prefHeight="25.0" prefWidth="464.0" style="-fx-font-color: rgb(238,168,47);" text="Enter polynomials in the form: 4x^3-2x^2+x-5+6x^-2..." textFill="#eea82f">
+         <font>
+            <Font size="11.0" />
+         </font></Label>
+      <Button fx:id="div" blendMode="EXCLUSION" layoutX="355.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" prefHeight="31.0" prefWidth="32.0" stylesheets="@style.css" text="/" />
+      <Button fx:id="deriv" blendMode="EXCLUSION" layoutX="398.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" prefHeight="35.0" prefWidth="72.0" stylesheets="@style.css" text="d/dx" />
+      <Button fx:id="integ" blendMode="EXCLUSION" layoutX="470.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#onMouseClick" prefHeight="35.0" prefWidth="66.0" stylesheets="@style.css" text=" ∫dx" />
+      <Label blendMode="SCREEN" layoutX="35.0" layoutY="307.0" prefHeight="25.0" prefWidth="301.0" text="Do not use spaces, paranthesis or the * operator." textFill="#eea82f">
+         <font>
+            <Font size="11.0" />
+         </font></Label>
+      <Label blendMode="SCREEN" layoutX="36.0" layoutY="338.0" text="Polynomials do not have to be sorted or simplified." textFill="#eea82f">
+         <font>
+            <Font size="11.0" />
+         </font></Label>
+      <Label blendMode="SCREEN" layoutX="36.0" layoutY="362.0" text="For derivative and integral operations, enter the polynomial in the first filed." textFill="#eea82f">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

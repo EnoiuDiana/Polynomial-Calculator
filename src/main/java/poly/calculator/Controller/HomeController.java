@@ -17,27 +17,45 @@ public class HomeController {
     private TextField secondPolynomial;
 
     public void insertResultOfOperation(String resultPoly) {
-        result.setText(resultPoly);
+        if(resultPoly.length() > 43) {
+            result.setText(resultPoly.substring(0,43) + "\n" + resultPoly.substring(43));
+        } else {
+            result.setText(resultPoly);
+        }
     }
 
     public void onMouseClick(MouseEvent mouseEvent) {
         Button button = (Button) mouseEvent.getSource();
-        String operation = button.getText();
+        String operation = button.getId();
         String firstPolyString = firstPolynomial.getText();
-        String secondPolyString = secondPolynomial.getText();
+        String secondPolyString;
+        if(operation.equals("deriv") || operation.equals("integ")) {
+            secondPolyString = "0";
+        } else {
+            secondPolyString = secondPolynomial.getText();
+        }
+        String resultPolyString = performPolynomialCalculations(firstPolyString, secondPolyString, operation);
+        insertResultOfOperation(resultPolyString);
+    }
 
+    public static String performPolynomialCalculations (String firstPolyString, String secondPolyString, String operation) {
         Polynomial firstPoly = InputAnalyze.parseInputPolynomialString(firstPolyString);
         Polynomial secondPoly = InputAnalyze.parseInputPolynomialString(secondPolyString);
 
         if(firstPoly == null || secondPoly == null) {
-            result.setText("Error: incorrectPolynomials");
+            return "Error: incorrectPolynomials";
         } else {
             firstPoly.simplifyAndSort();
             secondPoly.simplifyAndSort();
             Polynomial resultPoly = InputAnalyze.identifyOperationAndPerform(operation, firstPoly, secondPoly);
-            resultPoly.simplifyAndSort();
+            if(!operation.equals("div")) {
+                resultPoly.simplifyAndSort();
+            }
             String resultPolyString = resultPoly.polynomialToString();
-            insertResultOfOperation(resultPolyString);
+            if(resultPolyString.isEmpty()) {
+                resultPolyString = "0";
+            }
+            return resultPolyString;
         }
     }
 }
