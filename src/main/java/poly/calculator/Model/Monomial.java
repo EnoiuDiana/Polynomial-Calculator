@@ -70,6 +70,7 @@ public class Monomial {
     protected static Comparator<Monomial> compareByPower() {
         return Comparator.comparingInt(Monomial::getPower);
     }
+
     protected void updateMonomialString() {
         String newMonomial;
         if(isMathematicalInteger(this.coefficient)) {
