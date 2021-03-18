@@ -29,8 +29,6 @@ public class Polynomial {
     }
 
     public void simplifyAndSort() {
-        //check for zero polynomial
-        if(polynomial.size() == 1 && polynomial.get(0).getCoefficient() == 0) return;
         //if we have zero monomials remove them
         polynomial.removeIf(monomial -> monomial.getCoefficient() == 0);
         //simplify
@@ -53,6 +51,10 @@ public class Polynomial {
         //i have modified the coefficients of the monomials
         //so i  have to update the string
         updatePolynomial();
+
+        if(polynomial.isEmpty()) {
+            polynomial.add(new Monomial("0",0,0));
+        }
     }
 
     public String polynomialToString() {
